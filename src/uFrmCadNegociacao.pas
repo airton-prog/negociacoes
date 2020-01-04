@@ -15,7 +15,6 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    edtStatus: TDBEdit;
     dtsProdutores: TDataSource;
     dtsDistribuidores: TDataSource;
     Panel2: TPanel;
@@ -43,6 +42,8 @@ type
     btnAdicionarItem: TSpeedButton;
     btnSalvarItem: TButton;
     btnExcluirItem: TSpeedButton;
+    txtStatus: TDBText;
+    Label11: TLabel;
     procedure btnAdicionarItemClick(Sender: TObject);
     procedure dbLkProdutoCloseUp(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -76,7 +77,7 @@ totalNegociacao, saldo : double;
 begin
 
   if txtTotalNegociacao.Caption = '' then
-   txtTotalNegociacao.Caption := '0';
+     txtTotalNegociacao.Caption := '0';
 
   totalNegociacao := strToFloat(txtTotalNegociacao.Caption) + ( strToFloat(edtQuantidade.text) ) * ( strToFloat(edtVlrUnitario.text) );
   saldo := strToFloat(txtSaldo.Caption);
@@ -92,6 +93,8 @@ begin
     edtVlrUnitario.Text  := '';
     abort;
   end;
+ // dtsPadrao.DataSet.Post;
+  actGravar.Execute;
 
   sql := 'insert into itens_negociacao ( id_negociacao, id_produto, quantidade, vlr_unitario) ';
   sql := sql + 'values ( :id_negociacao, :id_produto, :quantidade, :vlr_unitario)';
@@ -99,7 +102,7 @@ begin
   dtmNegociacoes.qryInserirItensNegociacao.close;
   dtmNegociacoes.qryInserirItensNegociacao.SQL.Clear;
   dtmNegociacoes.qryInserirItensNegociacao.SQL.Add(sql);
-  dtmNegociacoes.qryInserirItensNegociacao.ParamByName('id_negociacao').AsInteger := strToInt(edtID.text)   ;
+  dtmNegociacoes.qryInserirItensNegociacao.ParamByName('id_negociacao').AsInteger := strToInt(edtID.text);//dtmNegociacoes.qryNegociacoesID.AsInteger;//
   dtmNegociacoes.qryInserirItensNegociacao.ParamByName('id_produto').AsInteger    := dbLkProduto.KeyValue;
   dtmNegociacoes.qryInserirItensNegociacao.ParamByName('quantidade').AsCurrency   := strToFloat(edtQuantidade.text) ;
   dtmNegociacoes.qryInserirItensNegociacao.ParamByName('vlr_unitario').AsCurrency := strToFloat(edtVlrUnitario.text) ;
@@ -160,6 +163,12 @@ begin
   inherited;
   dtmNegociacoes.qryNegociacoes.Active     := false;
   dtmNegociacoes.qryNegociacoes.Active     := true;
+
+  dtmNegociacoes.qryProdutores.Active     := false;
+  dtmNegociacoes.qryProdutores.Active     := true;
+
+  dtmNegociacoes.qryDistribuidores.Active     := false;
+  dtmNegociacoes.qryDistribuidores.Active     := true;
 end;
 
 procedure TfrmCadNegociacao.FormClose(Sender: TObject;

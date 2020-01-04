@@ -86,9 +86,9 @@ procedure TfrmCadModelo.actGravarExecute(Sender: TObject);
 begin
   dtsPadrao.DataSet.Edit;
   dtsPadrao.DataSet.Post;
-
+  
   HabilitarControles;
-  HabilitarControlesVisuais(true);
+  HabilitarControlesVisuais(false);
 
 end;
 
@@ -110,7 +110,7 @@ begin
   end;
 
   HabilitarControles;
-  HabilitarControlesVisuais(true);
+  HabilitarControlesVisuais(false);
 end;
 
 procedure TfrmCadModelo.actCancelarExecute(Sender: TObject);
@@ -119,7 +119,7 @@ begin
   dtsPadrao.dataset.filtered := false;
 
   HabilitarControles;
-  HabilitarControlesVisuais(true);
+  HabilitarControlesVisuais(false);
 end;
 
 procedure TfrmCadModelo.actPrimeiroExecute(Sender: TObject);
@@ -192,17 +192,19 @@ procedure TfrmCadModelo.HabilitarControlesVisuais(Status: Boolean);
 var
   I: Integer;
 begin
-  for I := 0 to ComponentCount - 1 do
-  begin
-    if Components[I] is TDBEdit then
-      TDBEdit(Components[I]).Enabled := Status
-    else if Components[I] is TDBLookupComboBox then
-      TDBLookupComboBox(Components[I]).Enabled := Status
-    else if Components[I] is TDBComboBox then
-      TDBComboBox(Components[I]).Enabled := Status
-    else if Components[I] is TDBMemo then
-      TDBMemo(Components[I]).Enabled := Status;
-  end;
+   for I := 0 to ComponentCount - 1 do
+   begin
+      if Components[I] is TDBEdit then
+         TDBEdit(Components[I]).Enabled := Status
+      else if Components[I] is TEdit then
+         TEdit(Components[I]).Enabled := Status
+      else if Components[I] is TDBLookupComboBox then
+         TDBLookupComboBox(Components[I]).Enabled := Status 
+      else if Components[I] is TDBComboBox then
+         TDBComboBox(Components[I]).Enabled := Status
+      else if Components[I] is TDBMemo then
+         TDBMemo(Components[I]).Enabled := Status;
+   end;
 end;
 
 end.

@@ -193,6 +193,7 @@ inherited frmCadProdutor: TfrmCadProdutor
             Width = 888
             Height = 31
             DataSource = dtsLimitesCredito
+            VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
             Align = alBottom
             Flat = True
             Ctl3D = False

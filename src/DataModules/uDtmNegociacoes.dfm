@@ -106,6 +106,8 @@ object dtmNegociacoes: TdtmNegociacoes
     end
   end
   object qryNegociacoes: TQuery
+    BeforePost = qryNegociacoesBeforePost
+    AutoRefresh = True
     DatabaseName = 'NEGOCIACOES.FDB'
     RequestLive = True
     SQL.Strings = (
@@ -124,26 +126,33 @@ object dtmNegociacoes: TdtmNegociacoes
     Left = 112
     Top = 80
     object qryNegociacoesID: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'ID'
-      Origin = '"AVALIACAO.FDB".NEGOCIACOES.ID'
+      Origin = '"NEGOCIACOES.FDB".NEGOCIACOES.ID'
+      ReadOnly = True
+      Required = True
     end
     object qryNegociacoesID_PRODUTOR: TIntegerField
       FieldName = 'ID_PRODUTOR'
-      Origin = '"AVALIACAO.FDB".NEGOCIACOES.ID_PRODUTOR'
+      Origin = '"NEGOCIACOES.FDB".NEGOCIACOES.ID_PRODUTOR'
     end
     object qryNegociacoesID_DISTRIBUIDOR: TIntegerField
       FieldName = 'ID_DISTRIBUIDOR'
-      Origin = '"AVALIACAO.FDB".NEGOCIACOES.ID_DISTRIBUIDOR'
+      Origin = '"NEGOCIACOES.FDB".NEGOCIACOES.ID_DISTRIBUIDOR'
     end
     object qryNegociacoesVLR_TOTAL: TFloatField
       FieldName = 'VLR_TOTAL'
-      Origin = '"AVALIACAO.FDB".NEGOCIACOES.VLR_TOTAL'
+      Origin = '"NEGOCIACOES.FDB".NEGOCIACOES.VLR_TOTAL'
       currency = True
     end
     object qryNegociacoesSTATUS: TStringField
+      DisplayWidth = 9
       FieldName = 'STATUS'
-      Origin = '"AVALIACAO.FDB".NEGOCIACOES.STATUS'
-      Size = 3
+      Origin = '"NEGOCIACOES.FDB".NEGOCIACOES.STATUS'
+      Size = 9
+    end
+    object qryNegociacoesDT_CADASTRO: TDateTimeField
+      FieldName = 'DT_CADASTRO'
     end
   end
   object qryStatusNegociacao: TQuery
@@ -365,7 +374,7 @@ object dtmNegociacoes: TdtmNegociacoes
       'FROM ITENS_NEGOCIACAO'
       'WHERE ITENS_NEGOCIACAO.ID_NEGOCIACAO = :ID;')
     Left = 496
-    Top = 368
+    Top = 352
     ParamData = <
       item
         DataType = ftInteger
@@ -407,7 +416,7 @@ object dtmNegociacoes: TdtmNegociacoes
   object dtsProvItens: TDataSetProvider
     DataSet = qryItens
     Left = 424
-    Top = 368
+    Top = 352
   end
   object cdtsItens: TClientDataSet
     Aggregates = <>
@@ -420,7 +429,7 @@ object dtmNegociacoes: TdtmNegociacoes
     ProviderName = 'dtsProvItens'
     OnCalcFields = cdtsItensCalcFields
     Left = 344
-    Top = 360
+    Top = 352
     object cdtsItensID_NEGOCIACAO: TIntegerField
       FieldName = 'ID_NEGOCIACAO'
       Origin = '"AVALIACAO.FDB".ITENS_NEGOCIACAO.ID_NEGOCIACAO'

@@ -106,6 +106,8 @@ object frmCadModelo: TfrmCadModelo
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
       Layout = blGlyphTop
+      ParentShowHint = False
+      ShowHint = False
       Transparent = False
     end
     object btnGravar: TSpeedButton
@@ -787,12 +789,13 @@ object frmCadModelo: TfrmCadModelo
       ImageIndex = 0
       Style = tbsSeparator
     end
-    object btnVoltar: TSpeedButton
+    object btnListar: TSpeedButton
       Left = 505
       Top = 2
       Width = 48
       Height = 48
-      Action = actVoltar
+      Action = actListar
+      Caption = 'Lista'
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
         2000000000000009000000000000000000000000000000000000FF00FF00FF00
@@ -876,6 +879,7 @@ object frmCadModelo: TfrmCadModelo
       Width = 48
       Height = 48
       Action = actFechar
+      Caption = 'Fechar'
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
         2000000000000009000000000000000000000000000000000000FF00FF00FF00
@@ -1058,9 +1062,9 @@ object frmCadModelo: TfrmCadModelo
       ImageIndex = 9
       OnExecute = actUltimoExecute
     end
-    object actVoltar: TAction
+    object actListar: TAction
       ImageIndex = 8
-      OnExecute = actVoltarExecute
+      OnExecute = actListarExecute
     end
     object actFechar: TAction
       ImageIndex = 10

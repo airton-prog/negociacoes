@@ -183,6 +183,33 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object txtStatus: TDBText
+        Left = 735
+        Top = 23
+        Width = 169
+        Height = 17
+        DataField = 'STATUS'
+        DataSource = dtsPadrao
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlue
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label11: TLabel
+        Left = 670
+        Top = 24
+        Width = 59
+        Height = 20
+        Caption = 'Status:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object dbLkProdutor: TDBLookupComboBox
         Left = 152
         Top = 24
@@ -202,6 +229,7 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Height = 21
         DataField = 'ID'
         DataSource = dtsPadrao
+        Enabled = False
         TabOrder = 1
       end
       object dbLkDistribuidor: TDBLookupComboBox
@@ -216,15 +244,6 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         ListSource = dtsDistribuidores
         TabOrder = 2
       end
-      object edtStatus: TDBEdit
-        Left = 656
-        Top = 24
-        Width = 121
-        Height = 21
-        DataField = 'STATUS'
-        DataSource = dtsPadrao
-        TabOrder = 3
-      end
       object Panel2: TPanel
         Left = 0
         Top = 175
@@ -232,7 +251,7 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Height = 338
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 4
+        TabOrder = 3
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
@@ -303,7 +322,7 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 4
       end
       object Panel3: TPanel
         Left = 0
@@ -312,7 +331,7 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Height = 66
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 6
+        TabOrder = 5
         object Label5: TLabel
           Left = 11
           Top = 16

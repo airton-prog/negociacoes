@@ -3,7 +3,7 @@ unit uDtmNegociacoes;
 interface
 
 uses
-  SysUtils, Classes, DB, DBTables, Provider, DBClient, IniFiles;
+  SysUtils, Classes, DB, DBTables, Provider, DBClient, IniFiles, DateUtils;
 
 type
   TdtmNegociacoes = class(TDataModule)
@@ -67,10 +67,12 @@ type
     cdtsItensTOTALITENS: TAggregateField;
     qryInserirLimiteCredito: TQuery;
     qryLimites_CreditoNOME_DISTRIBUIDOR: TStringField;
+    qryNegociacoesDT_CADASTRO: TDateTimeField;
     
     procedure cdtsItensCalcFields(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure dbNegociacoesBeforeConnect(Sender: TObject);
+    procedure qryNegociacoesBeforePost(DataSet: TDataSet);
 
 
 
@@ -95,17 +97,9 @@ begin
 end;
 
 procedure TdtmNegociacoes.DataModuleCreate(Sender: TObject);
-//var
-//  server, database, caminho, parametros : string;
-//  arquivoIni : TIniFile;
 begin
- // caminho := 'C:\Users\Administrador\Documents\GitHub\negociacoes\data\NEGOCIACOES.FDB';
-
- // dbNegociacoes.Params.Values['SERVER NAME'] := caminho;
   dbNegociacoes.Connected := false;
   dbNegociacoes.Connected := true;
-
-
 end;
 
 procedure TdtmNegociacoes.dbNegociacoesBeforeConnect(Sender: TObject);
@@ -124,5 +118,20 @@ begin
 
 end;
 
+
+procedure TdtmNegociacoes.qryNegociacoesBeforePost(DataSet: TDataSet);
+var
+   dtAtual : TDateTime;
+begin
+   dtAtual := date;
+
+   if qryNegociacoesSTATUS.AsString = '' then
+      qryNegociacoesSTATUS.AsString := 'PENDENTE';
+
+   if qryNegociacoes.FieldByName('DT_CADASTRO').AsDateTime = 0 then
+      qryNegociacoes.FieldByName('DT_CADASTRO').AsDateTime := dtAtual;
+
+   qryNegociacoesVLR_TOTAL.AsFloat := frmCadNegociacao.txtTotalNegociacao.Field.Value;
+end;
 
 end.
