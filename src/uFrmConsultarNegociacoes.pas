@@ -94,6 +94,13 @@ procedure TfrmConsultarNegociacoes.FormCreate(Sender: TObject);
 begin
   // Retorna o SQl que foi colocado na query em tempo de projeto
   sqlConsultarNegociacoes := dtmNegociacoes.qryConsultarNegociacoes.Text;
+
+  dtmNegociacoes.qryProdutores.Active := false;
+  dtmNegociacoes.qryProdutores.Active := true;
+
+  dtmNegociacoes.qryDistribuidores.Active := false;
+  dtmNegociacoes.qryDistribuidores.Active := true;
+
 end;
 
 procedure TfrmConsultarNegociacoes.btnLimparFiltrosClick(Sender: TObject);
