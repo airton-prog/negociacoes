@@ -24,7 +24,6 @@ inherited frmCadNegociacao: TfrmCadNegociacao
   inherited pgcPadrao: TPageControl
     Width = 1016
     Height = 541
-    ActivePage = TabSheet2
     Align = alClient
     inherited TabSheet1: TTabSheet
       inherited dbGridPadrao: TDBGrid

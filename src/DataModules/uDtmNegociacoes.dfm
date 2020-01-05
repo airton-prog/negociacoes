@@ -39,12 +39,20 @@ object dtmNegociacoes: TdtmNegociacoes
     DatabaseName = 'NEGOCIACOES.FDB'
     RequestLive = True
     SQL.Strings = (
-      'SELECT * FROM PRODUTORES')
+      'SELECT '
+      'PRODUTORES.ID,'
+      'PRODUTORES.NOME,'
+      'PRODUTORES.CNPJ_CPF'
+      'FROM PRODUTORES'
+      'ORDER BY PRODUTORES.ID')
     Left = 160
     Top = 24
     object qryProdutoresID: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'ID'
       Origin = '"AVALIACAO.FDB".PRODUTORES.ID'
+      ReadOnly = True
+      Required = True
     end
     object qryProdutoresNOME: TStringField
       FieldName = 'NOME'
@@ -173,28 +181,9 @@ object dtmNegociacoes: TdtmNegociacoes
   object qryInserirItensNegociacao: TQuery
     DatabaseName = 'NEGOCIACOES.FDB'
     SQL.Strings = (
-      'SELECT'
-      'SUM(NEGOCIACOES.vlr_total) as TOTAL_NEGOCIACOES'
-      'from'
-      'NEGOCIACOES'
-      'WHERE NEGOCIACOES.status = '#39'APROVADA'#39' AND'
-      'NEGOCIACOES.id_produtor  = :ID_PRODUTOR AND'
-      'NEGOCIACOES.id_distribuidor = :ID_DISTRIBUIDOR')
+      '')
     Left = 576
-    Top = 144
-    ParamData = <
-      item
-        DataType = ftString
-        Name = 'ID_PRODUTOR'
-        ParamType = ptUnknown
-        Value = '0'
-      end
-      item
-        DataType = ftString
-        Name = 'ID_DISTRIBUIDOR'
-        ParamType = ptUnknown
-        Value = '0'
-      end>
+    Top = 152
     object qryInserirItensNegociacaoTOTAL_NEGOCIACOES: TFloatField
       FieldName = 'TOTAL_NEGOCIACOES'
     end
@@ -325,8 +314,8 @@ object dtmNegociacoes: TdtmNegociacoes
       'LIMITE_CREDITO '
       'FROM LIMITES_CREDITOS'
       'WHERE LIMITES_CREDITOS.ID_PRODUTOR = :ID; ')
-    Left = 576
-    Top = 16
+    Left = 536
+    Top = 24
     ParamData = <
       item
         DataType = ftInteger
@@ -464,28 +453,8 @@ object dtmNegociacoes: TdtmNegociacoes
   object qryInserirLimiteCredito: TQuery
     DatabaseName = 'NEGOCIACOES.FDB'
     SQL.Strings = (
-      'INSERT INTO LIMITES_CREDITOS('
-      'ID_PRODUTOR,      '
-      'ID_DISTRIBUIDOR, '
-      'LIMITE_CREDITO)'
-      'VALUES( :ID_PRODUTOR, :ID_DISTRIBUIDOR, :LIMITE_CREDITO)')
+      '')
     Left = 112
     Top = 288
-    ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'ID_PRODUTOR'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'ID_DISTRIBUIDOR'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'LIMITE_CREDITO'
-        ParamType = ptUnknown
-      end>
   end
 end

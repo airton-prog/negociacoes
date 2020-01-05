@@ -39,9 +39,9 @@ type
     Panel1: TPanel;
     dbGridPadrao: TDBGrid;
     dtsPadrao: TDataSource;
-    btnVoltar: TSpeedButton;
+    btnListar: TSpeedButton;
     btnFechar: TSpeedButton;
-    actVoltar: TAction;
+    actListar: TAction;
     actFechar: TAction;
     procedure actNovoExecute(Sender: TObject);
     procedure actGravarExecute(Sender: TObject);
@@ -54,7 +54,7 @@ type
     procedure actUltimoExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure actFecharExecute(Sender: TObject);
-    procedure actVoltarExecute(Sender: TObject);
+    procedure actListarExecute(Sender: TObject);
     procedure dbGridPadraoDblClick(Sender: TObject);
   private
     { Private declarations }
@@ -165,9 +165,12 @@ begin
   Self.Close;
 end;
 
-procedure TfrmCadModelo.actVoltarExecute(Sender: TObject);
+procedure TfrmCadModelo.actListarExecute(Sender: TObject);
 begin
   pgcPadrao.ActivePage := TabSheet1;
+  dtsPadrao.DataSet.Active := false;
+  dtsPadrao.DataSet.Active := true;
+
 end;
 
 procedure TfrmCadModelo.dbGridPadraoDblClick(Sender: TObject);

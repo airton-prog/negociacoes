@@ -22,7 +22,6 @@ inherited frmCadProdutor: TfrmCadProdutor
   inherited pgcPadrao: TPageControl
     Width = 896
     Height = 642
-    ActivePage = TabSheet2
     Align = alClient
     inherited TabSheet1: TTabSheet
       inherited dbGridPadrao: TDBGrid

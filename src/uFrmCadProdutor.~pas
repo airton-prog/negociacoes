@@ -65,23 +65,38 @@ end;
 procedure TfrmCadProdutor.btnAdicionarLimiteCreditoClick(Sender: TObject);
 begin
   inherited;
+  if (dtsPadrao.DataSet.State in [dsInsert, dsEdit]) then
+  begin
+    dtsPadrao.DataSet.Post;
+  end
+  else
+  begin
+     dtsPadrao.DataSet.edit;
+     dtsPadrao.DataSet.Post;
+  end;
+
+  dtmNegociacoes.qryLimites_Credito.Active := false;
+  dtmNegociacoes.qryLimites_Credito.Active := true;
+
   dtmNegociacoes.qryInserirLimiteCredito.ParamByName('ID_PRODUTOR').AsInteger     := strToInt(edtID.Text);
   dtmNegociacoes.qryInserirLimiteCredito.ParamByName('ID_DISTRIBUIDOR').AsInteger := dbLkDistribuidore.KeyValue;
   dtmNegociacoes.qryInserirLimiteCredito.ParamByName('LIMITE_CREDITO').AsFloat    := strToFloat(edtLimiteCredito.text);
   dtmNegociacoes.qryInserirLimiteCredito.ExecSQL;
+
   dtmNegociacoes.qryLimites_Credito.Active := false;
   dtmNegociacoes.qryLimites_Credito.Active := true;
 
   edtLimiteCredito.Text := '';
   dbLkDistribuidore.KeyValue := 0;
+
+  
 end;
 
 procedure TfrmCadProdutor.btnSalvarLimiteCreditoClick(Sender: TObject);
 begin
   inherited;
   dtmNegociacoes.qryLimites_Credito.edit;
-  dtmNegociacoes.qryLimites_Credito.Post;
- // dtmNegociacoes.qryLimites_Credito.CommitUpdates;
+  dtmNegociacoes.qryLimites_Credito.Post;  
 end;
 
 procedure TfrmCadProdutor.FormShow(Sender: TObject);

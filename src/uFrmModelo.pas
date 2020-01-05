@@ -176,9 +176,6 @@ end;
 procedure TfrmCadModelo.dbGridPadraoDblClick(Sender: TObject);
 begin
   actEditar.Execute;
-
- // dtsPadrao.DataSet.Edit;
- // pgcPadrao.ActivePage := TabSheet2;
 end;
 
 procedure TfrmCadModelo.HabilitarControles;

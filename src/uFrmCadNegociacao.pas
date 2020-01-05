@@ -93,7 +93,7 @@ begin
     edtVlrUnitario.Text  := '';
     abort;
   end;
- // dtsPadrao.DataSet.Post;
+
   actGravar.Execute;
 
   sql := 'insert into itens_negociacao ( id_negociacao, id_produto, quantidade, vlr_unitario) ';
@@ -119,6 +119,8 @@ begin
   edtQuantidade.Text   := '';
   edtVlrUnitario.Text  := '';
 
+  actGravar.Execute;
+  actEditar.Execute;
   
 
 end;

@@ -244,17 +244,6 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         ListSource = dtsDistribuidores
         TabOrder = 2
       end
-      object edtStatus: TDBEdit
-        Left = 496
-        Top = 64
-        Width = 121
-        Height = 21
-        DataField = 'STATUS'
-        DataSource = dtsPadrao
-        Enabled = False
-        TabOrder = 3
-        Visible = False
-      end
       object Panel2: TPanel
         Left = 0
         Top = 175
@@ -262,7 +251,7 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Height = 338
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 4
+        TabOrder = 3
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
@@ -333,7 +322,7 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 4
       end
       object Panel3: TPanel
         Left = 0
@@ -342,7 +331,7 @@ inherited frmCadNegociacao: TfrmCadNegociacao
         Height = 66
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 6
+        TabOrder = 5
         object Label5: TLabel
           Left = 11
           Top = 16

@@ -980,7 +980,7 @@ object frmCadModelo: TfrmCadModelo
     Top = 115
     Width = 812
     Height = 390
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alTop
     TabOrder = 2
     object TabSheet1: TTabSheet

@@ -131,7 +131,15 @@ begin
    if qryNegociacoes.FieldByName('DT_CADASTRO').AsDateTime = 0 then
       qryNegociacoes.FieldByName('DT_CADASTRO').AsDateTime := dtAtual;
 
-   qryNegociacoesVLR_TOTAL.AsFloat := frmCadNegociacao.txtTotalNegociacao.Field.Value;
+   if frmCadNegociacao.txtTotalNegociacao.Field.IsNull then
+   begin
+      qryNegociacoesVLR_TOTAL.AsFloat := 0;
+   end
+   else
+   begin
+      qryNegociacoesVLR_TOTAL.AsFloat := frmCadNegociacao.txtTotalNegociacao.Field.value;
+   end;
+
 end;
 
 end.

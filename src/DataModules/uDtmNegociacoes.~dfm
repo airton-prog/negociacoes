@@ -39,12 +39,20 @@ object dtmNegociacoes: TdtmNegociacoes
     DatabaseName = 'NEGOCIACOES.FDB'
     RequestLive = True
     SQL.Strings = (
-      'SELECT * FROM PRODUTORES')
+      'SELECT '
+      'PRODUTORES.ID,'
+      'PRODUTORES.NOME,'
+      'PRODUTORES.CNPJ_CPF'
+      'FROM PRODUTORES'
+      'ORDER BY PRODUTORES.ID')
     Left = 160
     Top = 24
     object qryProdutoresID: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'ID'
       Origin = '"AVALIACAO.FDB".PRODUTORES.ID'
+      ReadOnly = True
+      Required = True
     end
     object qryProdutoresNOME: TStringField
       FieldName = 'NOME'
@@ -149,7 +157,6 @@ object dtmNegociacoes: TdtmNegociacoes
       DisplayWidth = 9
       FieldName = 'STATUS'
       Origin = '"NEGOCIACOES.FDB".NEGOCIACOES.STATUS'
-      ReadOnly = True
       Size = 9
     end
     object qryNegociacoesDT_CADASTRO: TDateTimeField
